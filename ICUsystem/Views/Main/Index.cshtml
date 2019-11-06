@@ -18,7 +18,6 @@
         <label for="pwd">科別</label>
         <input type="password" class="form-control" id="division" placeholder="Enter division">
     </div>
-
     <div class="form-group">
         <div class="col-md-2">
         </div>
@@ -27,43 +26,37 @@
         </div>
     </div>
 
-</div>
-
-
-<div id="search_grid"></div>
-<div class="uk-card  uk-text-left" id="record_window" style="display:none">
     <div id="patient_grid"></div>
 </div>
 
-<script>
 
+
+
+
+<script>
 $(".btn_search").click(function () {
-            if (getgridcount != 0) {
-                $("#patient_grid").data('kendoGrid').destroy();
-            }
-            getgridcount++;
-            var search_data = {
-                
-            };
-            $("#patient_grid").kendoGrid({
+    $("#patient_grid").kendoGrid({
                 height: 500,
                 columns: [
-                    { field: "BookClassName", title: "床號", width: "10%" },
-                    { field: "BookName", title: "病歷號碼", width: "30%" },
-                    { field: "BookBoughtDate", title: "病人名稱", width: "10%" },
+                    { field: "BedId", title: "床號", width: "10%" },
+                    { field: "PatientId", title: "病歷號碼", width: "30%" },
+                    { field: "PatientName", title: "病人名稱", width: "10%" },
                     
                 ],
                 dataSource: {
-                    transport: {
-                        read: {
-                            url: "GetGridData",
-                            type: "post",
-                            dataType: "json",
-                            data: search_data
-                        }
-                    }
+                    data: [{
+                        BedId: "123",
+                        PatientId: "123",
+                        PatientName:"閔Suga"
+                    },
+                    {
+                        BedId: "456",
+                        PatientId: "456",
+                        PatientName:"Ariel"
+                    }]
                 }
-            })
-        });
     });
+        });
+ 
+
 </script>
